@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bulma/css/bulma.css';
+import FoodBox from './FoodBox';
+import foods from './foods.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const listOfFoods = foods;
+console.log(listOfFoods.slice(0, 3));
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      foods,
+    };
+  }
+  render() {
+    return foods.map((value) => (
+      <div className="App">
+        <FoodBox
+          name={value.name}
+          calories={value.calories}
+          image={value.image}
+          quantity={value.quantity}
+        />
+      </div>
+    ));
+  }
 }
 
 export default App;

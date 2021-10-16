@@ -4,18 +4,18 @@ import 'bulma/css/bulma.css';
 import FoodBox from './FoodBox';
 import foods from './foods.json';
 
-const listOfFoods = foods;
+const listOfFoods = foods.slice(0, 3);
 console.log(listOfFoods.slice(0, 3));
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      foods,
+      food: listOfFoods
     };
   }
   render() {
-    return foods.map((value) => (
+    return this.state.food.map((value) => (
       <div className="App">
         <FoodBox
           name={value.name}
